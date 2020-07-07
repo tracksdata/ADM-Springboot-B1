@@ -18,7 +18,7 @@ public class ProductController {
 	
 	
 	@Autowired
-	private ProductService prodDao;
+	private ProductService ps;
 
 	@RequestMapping("/")
 	public String welocme() {
@@ -43,7 +43,7 @@ public class ProductController {
 		prod.setPrice(price);
 		prod.setDescription(description);
 
-		prodDao.saveProduct(prod);
+		ps.saveProduct(prod);
 
 		return "productform";
 	}
@@ -61,7 +61,7 @@ public class ProductController {
 	@RequestMapping("/saveProductV2")
 	public String saveproductV2(@ModelAttribute Product prod, Model data) {
 
-		prodDao.saveProduct(prod);
+		ps.saveProduct(prod);
 
 		data.addAttribute("msg", "Product Saved Successfully");
 
@@ -73,7 +73,7 @@ public class ProductController {
 	@RequestMapping("/listAll")
 	public String listAll(Model data) {
 
-		List<Product> prods = prodDao.findAll();
+		List<Product> prods = ps.findAll();
 		System.out.println(prods);
 
 		data.addAttribute("prods", prods);
