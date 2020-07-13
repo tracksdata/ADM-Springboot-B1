@@ -8,11 +8,11 @@
 </head>
 <body>
 
-	<h1>Hello</h1>
+	<jsp:include page="header.jsp"/>
 	<hr />
-	<h3>
-		<a href="/loadForm">Load Form</a>
-	</h3>
+
+	<jsp:include page="menu.jsp" />
+	
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,16 +9,27 @@
 </head>
 <body>
 
-<form action="saveProductV1" method="post">
+	<jsp:include page="header.jsp" />
+	<hr />
+	<jsp:include page="menu.jsp" />
 
-Name: <input name="name"/> <br/>
-Price: <input name="price"/> <br/>
-Description: <textarea name="description"></textarea> <br/>
-Date: <input type="datetime-local" name="productDate"><br/>
-<button>Save</button>
- 
 
-</form>
+	<div align="center">
+		<form:form modelAttribute="product">
+			<form:input path="name" />
+			<br />
+			<form:input path="price" />
+			<br />
+			<form:textarea path="description" />
+			<br />
+			<input type="datetime-local" name="dateAdded"
+				value="${product.dateAdded }" />
+			<br>
+			<form:input path="dateAdded" />
+			<br />
+		</form:form>
+
+	</div>
 
 
 </body>
