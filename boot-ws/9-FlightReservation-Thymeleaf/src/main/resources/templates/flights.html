@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<table border="1">
+	<thead>
+        <tr>
+            <th>#</th>
+            <th>Flight</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Fare</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+	
+	 <tbody>
+		<tr th:each="flight : ${flights}" >
+		  	 <td th:text="${flight.id}"/>
+		  	 <td th:text="${flight.flightNumber}"/>
+		  	 <td th:text="${flight.origin}"/>
+		  	 <td th:text="${flight.destination}"/>
+		  	 <td th:text="${flight.flightDate}"/>
+		  	 <td th:text="${flight.flightTime}"/>
+		  	 
+		  	 <td th:text="${flight.fare.amount}"/>
+ 	 		 <td>
+ 	 		 <a th:href="@{/book(
+ 	 		 					flightNumber=${flight.flightNumber},
+ 	 		 					origin=${flight.origin},
+ 	 		 					destination=${flight.destination},
+ 	 		 					flightDate=${flight.flightDate},
+ 	 		 					fare=${flight.fare.amount},
+ 	 		 					)}">Book</a>
+ 	 		 </td>
+		</tr>
+		 </tbody>
+	</table>
+
+
+</body>
+</html>
