@@ -2,6 +2,7 @@ package com.cts.product;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -57,9 +58,29 @@ public class Application {
 		ReviewsDao reviewsDao = ac.getBean(ReviewsDao.class);
 		UserDao userDao = ac.getBean(UserDao.class);
 
-		prodDao.saveAll(Arrays.asList(p1, p2, p3));
+		//prodDao.saveAll(Arrays.asList(p1, p2, p3));
 		// userDao.saveAll(Arrays.asList(u1,u2,u3));
-		reviewsDao.saveAll(Arrays.asList(r1, r2, r3, r4, r5, r6, r7));
+		//reviewsDao.saveAll(Arrays.asList(r1, r2, r3, r4, r5, r6, r7));
+		
+		Product prod= prodDao.findById(1).orElse(null);
+		
+		System.out.println("Id: "+prod.getId());
+		System.out.println("Name: "+prod.getName());
+		System.out.println("price: "+prod.getPrice());
+		System.out.println("Description: "+prod.getDescription());
+		System.out.println("-----------------------------------------");
+		
+		for(Reviews r:prod.getReviews()) {
+			System.out.println("review Id: "+r.getReviewId());
+			System.out.println("Review: "+r.getReview());
+			System.out.println("On Date: "+r.getReviewDate());
+			System.out.println("User: "+r.getUser().getUserName());
+			System.out.println("-------------------------------------");
+		}
+		
+		
+		
+		
 
 	}
 

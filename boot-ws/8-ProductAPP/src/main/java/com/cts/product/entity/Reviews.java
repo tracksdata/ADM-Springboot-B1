@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -28,7 +29,7 @@ public class Reviews {
 		this.user = user;
 	}
 
-	@OneToOne(cascade =CascadeType.ALL)
+	@OneToOne(cascade =CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "userName")
 	private User user;
 

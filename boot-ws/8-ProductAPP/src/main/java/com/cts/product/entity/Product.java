@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -32,7 +33,7 @@ public class Product {
 		this.description = description;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinTable(name = "productReviews", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = {
 			@JoinColumn(name = "reviewId") })
 	private List<Reviews> reviews = new ArrayList<>();
